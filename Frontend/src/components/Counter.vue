@@ -1,23 +1,21 @@
-<script setup>
-  import {ref, onMounted} from 'vue';
-  //life-cycle hooks
-  onMounted(() => {
-    console.log('Component is mounted');
-    //API calls
-  });
-  //methods
-  const counter = ref(0);
-  const increment = () => {
-    counter.value++;
+<script>
+export default {
+  name: 'Counter',
+  props: ["modelValue"],
+  methods: {
+    handleIncrement() {
+      this.$emit('update:modelValue', this.modelValue + 1);
+    },
+    handleDecrement() {
+      this.$emit('update:modelValue', this.modelValue - 1);
+    }
   }
-  const decrement = () => {
-    counter.value--;
-  }
+}
 </script>
 <template>
   <div>
-    <button @click="increment">+</button>
-    <button @click="decrement">-</button>
-    <div>{{ counter }}</div>
+    <button @click="handleIncrement">+</button>
+    <button @click="handleDecrement">-</button>
+    <div>{{ modelValue }}</div>
   </div>
 </template>

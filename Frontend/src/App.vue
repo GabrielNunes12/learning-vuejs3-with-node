@@ -1,44 +1,26 @@
 <template>
   <div>
-    <button @click="this.increment">
-      +
-    </button>
-    <button @click="this.decrement">
-      -
-    </button>
-    <div>{{ count }}</div>
-    <h2>Counter</h2>
-    <Counter />
+    <form>
+      <email-form v-model="emailString"/>
+    </form>
+    <counter v-model="counter"/>
   </div>
 </template>
 
 <script>
-import { useStore } from 'vuex';
-import { computed } from 'vue';
+import EmailForm from './components/EmailForm.vue';
 import Counter from './components/Counter.vue';
 export default {
   components: {
-    Counter
+    'email-form': EmailForm,
+    'counter': Counter
   },
-  setup: () => {
-    const store = useStore();
+  data() {
     return {
-      count: computed(() => store.state.count),
-      increment: () => store.dispatch('increment'),
-      decrement: () => store.dispatch('decrement'),
-    };
-  },
+      emailString: '',
+      counter: 0
+    }
+  }
 }
 
 </script>
-
-<style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
-</style>
