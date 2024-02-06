@@ -1,8 +1,12 @@
 import { createApp } from 'vue'
+import { routes } from '@/routes/route.js'
+import { createRouter, createWebHashHistory } from 'vue-router';
 import App from './App.vue'
-import store from './store/click'
 
 const app = createApp(App);
-
-app.use(store)
+const router = createRouter({
+  history: createWebHashHistory(),
+  routes,
+})
+app.use(router);
 app.mount('#app')

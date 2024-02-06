@@ -1,26 +1,32 @@
 <template>
   <div>
-    <form>
-      <email-form v-model="emailString"/>
-    </form>
-    <counter v-model="counter"/>
+    <Header />
+    <Home />
+    <Footer />
   </div>
 </template>
 
 <script>
-import EmailForm from './components/EmailForm.vue';
-import Counter from './components/Counter.vue';
+import Home from '@/views/Home.vue';
+import Footer from '@/components/Footer.vue';
+import Header from '@/components/Header.vue';
 export default {
   components: {
-    'email-form': EmailForm,
-    'counter': Counter
+    Footer,
+    Home,
+    Header
   },
   data() {
     return {
-      emailString: '',
-      counter: 0
     }
   }
 }
 
 </script>
+<style>
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+</style>
